@@ -20,45 +20,50 @@ public class SortsLab1 {
 
     public static void insertionSort(int[] a){
         //put your code here
-        /*
-        for (int j = 0; j < (a.length - 1); j++) {
-            if (a[j] <= a[j + 1]) {}
-            else
+        int temporary_value, larger_left;
+        for (int i = 1; i < a.length; i++) {
+            // In iteration i, swap a[i] with each larger entry to its left.
+            // Because a[0] has no entries left of it, start at i = 1.
 
+            for (int j = i; j > 0; j --) {
+                if (a[j-1] > a[j]) {
+                    temporary_value = a[j];
+                    larger_left = a[j-1];
+
+                    // swap values
+                    a[j] = larger_left;
+                    a[j-1] = temporary_value;
+
+                    // iterate until the temporary value does not have a
+                    // larger entry to its left
+                }
+            }
         }
-        */
-
     }
 
     public static void selectionSort(int[] a){
         //put your code here
-        System.out.println("Inside selectionSort");
-
         int remaining_entries = a.length;
-        int index_at_min, current_min;
-        int temporary_value;
+        int temporary_value, index_at_min, current_min;
 
         for (int i = 0; i < (remaining_entries - 1); i++) {
-            // First, find index min of smallest remaining entry
-            index_at_min = i;
+            // First, find index min of smallest remaining entry,
+            // don't need to do this for the last entry
             temporary_value = a[i];
+            index_at_min = i;
             current_min = a[i];
 
             for (int j = i + 1; j < remaining_entries; j++) {
-                if (current_min <= a[j]) { /* do nothing */ }
-                else {
+                if (current_min > a[j]) {
                     current_min = a[j];
                     index_at_min = j;
                 }
             }
-            System.out.println("Current i = " + i);
-            System.out.println("Element at i = " + a[i]);
-            System.out.println("Current min = " + current_min);
-            System.out.println("Index at min = " + index_at_min + "\n");
 
             // Then, swap a[i] and a[min]
             a[i] = current_min;
             a[index_at_min] = temporary_value;
+
             // Repeat for remaining entries
         }
     }
@@ -90,8 +95,8 @@ public class SortsLab1 {
 
           System.out.println("testing sort...");
           //Arrays.sort(list);
-          selectionSort(list);
-          //insertionSort(list);
+          //selectionSort(list);
+          insertionSort(list);
 
 
 
