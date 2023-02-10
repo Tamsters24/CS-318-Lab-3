@@ -2,6 +2,10 @@
 *  Steve Sheehy
 *  January, 2022
 *
+*  Revised by Tammy Busche
+*  CS 318: Algorithm Analysis
+*  68211-Winter 2023
+*  Lab 3
 */
 
 import java.util.Arrays;
@@ -21,6 +25,7 @@ public class SortsLab1 {
     public static void insertionSort(int[] a){
         //put your code here
         int temporary_value, larger_left;
+
         for (int i = 1; i < a.length; i++) {
             // In iteration i, swap a[i] with each larger entry to its left.
             // Because a[0] has no entries left of it, start at i = 1.
@@ -69,45 +74,33 @@ public class SortsLab1 {
     }
 
 
-
     public static void main(String[] args){
 
-          long count = 0;
-          Integer nInt = new Integer(args[0]);
-          int n = nInt.intValue();
-          
-          System.out.println("generating array of random values of size: " + n + "\n");
-          int[] list = new int[n];
-          for (int i = 0; i < n; i++)
-               list[i] = StdRandom.uniform(0, n);
+        long count = 0;
+        Integer nInt = new Integer(args[0]);
+        int n = nInt.intValue();
 
-          list[0] = 7;
-          list[1] = 10;
-          list[2] = 5;
-          list[3] = 3;
-          list[4] = 8;
-          list[5] = 4;
-          list[6] = 2;
-          list[7] = 9;
-          list[8] = 6;
+        System.out.println("generating array of random values of size: " + n + "\n");
 
-          System.out.println("unsorted array: " + Arrays.toString(list) + "\n\n");
+        int[] list = new int[n];
+        for (int i = 0; i < n; i++)
+            list[i] = StdRandom.uniform(0, n);
 
-          System.out.println("testing sort...");
-          //Arrays.sort(list);
-          //selectionSort(list);
-          insertionSort(list);
+        System.out.println("unsorted array: " + Arrays.toString(list) + "\n\n");
+
+        System.out.println("testing sort...");
+        //Arrays.sort(list);
+        //selectionSort(list);
+        insertionSort(list);
 
 
+        System.out.println("sorted array: " + Arrays.toString(list) + "\n\n");
 
-          System.out.println("sorted array: " + Arrays.toString(list) + "\n\n");
+        System.out.println("testing isSorted");
+        System.out.println("isSorted (should be true): " + isSorted(list));
 
-          System.out.println("testing isSorted");
-          System.out.println("isSorted (should be true): " + isSorted(list));
-
-          list[list.length/2] = 23412341;
-          System.out.println("test array: " + Arrays.toString(list) + "\n");
-          System.out.println("isSorted (should be false): " + isSorted(list));
+        list[list.length/2] = 23412341;
+        System.out.println("test array: " + Arrays.toString(list) + "\n");
+        System.out.println("isSorted (should be false): " + isSorted(list));
     }
-
 }
